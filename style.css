@@ -39,8 +39,13 @@ body:before{
 }
 
 /* INPUT CONTAINER */
+
+.input-container{
+    position: relative;
+}
+
 .city-input{
-    width: 100px;
+    width: 100%;
     padding: 10px 16px;
     border-radius: 99px;
     border: 3px solid transparent;
@@ -48,11 +53,23 @@ body:before{
     outline: none;
     font-weight: 500;
     transition: 0.25s border;
+    padding-right: 45px;
 }
 .city-input:focus{
     border: 3px solid rgb(0, 0, 0, 0.15); 
 }
 .city-input::placeholder{
     color: rgb(225, 225, 255, 0.75)
+}
+
+.search-btn{
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    display: flex;
+    border: none;
+    cursor: pointer;
 }
 /* END INPUT CONTAINER */
