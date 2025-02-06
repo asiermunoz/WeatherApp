@@ -5,6 +5,14 @@ const notFoundSection = document.querySelector('.not-found')
 const searchCitySection = document.querySelector('.search-city')
 const weatherInfoSection = document.querySelector('.weather-info')
 
+const countryTxt = document.querySelector('.country-txt')
+const tempTxt = document.querySelector('.temp-txt')
+const conditionTxt = document.querySelector('.condition-txt')
+const humidityValueTxt = document.querySelector('.humidity-value-txt')
+const windValueTxt = document.querySelector('.wind-value-txt')
+const weatherSummaryImg = document.querySelector('.weather-summary-img')
+const currentDateTxt = document.querySelector('.current-date-txt')
+
 const apiKey = 'f2a34c51c330b0316678b998175cf66f';
 
 searchBtn.addEventListener('click', () => {
@@ -36,9 +44,32 @@ async function updateWeatherInfo(city){
     const weatherData = await getFetchData('weather', city)
     if(weatherData.cod != 200){
         showDisplaySection(notFoundSection)
+        console.log('holsaaaaaaa')
         return
     }
+
+    console.log(weatherData)
+    console.log('holsa')
+
+    const {
+        name: country,
+        main: {temp, humidity},
+        weather: [{id, main}],
+        wind: {speed}
+
+    } = weatherDate
+
+    countryTxt.textContent = country
+    tempTxt.textContent = Math.round(temp) + ' ºC'
+    humidityValueTxt.textContent = humidity + '%'
+    conditionTxt.textContent = main
+    windValueTxt.textContent = speed + 'm/s'
+
+
+
+
     showDisplaySection(weatherInfoSection)
+    
     
 }
 
